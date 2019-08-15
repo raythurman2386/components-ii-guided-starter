@@ -31,3 +31,16 @@ const container = document.querySelector('.dogs')
 container.appendChild(dog1)
 container.appendChild(dog2)
 container.appendChild(dog3)
+
+axios.get(`https://dog.ceo/api/breed/husky/images/random/12`)
+  .then((res) => {
+    // network request finished
+    console.log(res.data.message)
+    const data = res.data.message;
+    data.forEach(dog => {
+      container.appendChild(DogCard(dog, 'husky'));
+    });
+  })
+  .catch((error) => {
+    console.log('Network request was unsuccessful', error)
+  })
