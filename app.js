@@ -22,17 +22,11 @@ function DogCard(imageUrl, titleText){
   return card
 }
 
-const dog1 = DogCard("https://images.dog.ceo/breeds/husky/20180924_193829.jpg", 'Husky')
-const dog2 = DogCard("https://images.dog.ceo/breeds/husky/n02110185_1066.jpg", 'Husky')
-const dog3 = DogCard("https://images.dog.ceo/breeds/husky/n02110185_2736.jpg", 'Husky')
-
+const getButton = document.querySelector('#getdogs')
 const container = document.querySelector('.dogs')
 
-container.appendChild(dog1)
-container.appendChild(dog2)
-container.appendChild(dog3)
-
-axios.get(`https://dog.ceo/api/breed/husky/images/random/12`)
+getButton.addEventListener('click', () => {
+  axios.get(`https://dog.ceo/api/breed/husky/images/random/12`)
   .then((res) => {
     // network request finished
     console.log(res.data.message)
@@ -44,3 +38,5 @@ axios.get(`https://dog.ceo/api/breed/husky/images/random/12`)
   .catch((error) => {
     console.log('Network request was unsuccessful', error)
   })
+})
+
